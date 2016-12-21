@@ -1,0 +1,10 @@
+framework module AppWordsSDK {
+  umbrella header "AppWordsSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module AppWordsSDK.Swift {
+    header "AppWordsSDK-Swift.h"
+}
