@@ -22,7 +22,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'AppWordsSDK', :git => 'https://github.com/AGS123/ios-concierge-sdk-pod.git'
+    pod 'AppWordsSDK', :git => 'https://github.com/deeplinkme/appwords-ios.git'
 end
 ```
 
@@ -110,7 +110,7 @@ Notes:
 
 * The `type` parameter is ...
 
-* The `view` parameter refers to the view which will be saved as an image, and sent to the server. It can be set into the `nil` value, which will couse the software to make the screenshot of the whole screen.
+* The `view` parameter refers to the view which will be saved as an image, and sent to the server. It can be set into the `nil` value, which will cause the software to make the screenshot of the whole screen.
 
 * The `viewName` parameter is ...
 
