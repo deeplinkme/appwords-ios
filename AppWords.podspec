@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "AppWords"
-  s.version          = "1.0.1"
+  s.version          = “1.0.2”
   s.summary          = "Deeplink AppWords SDK"
   s.description      = <<-DESC
                        Deeplink’s AppWords Assistant will enable you to offer an AI assistant right inside your app!  Helps your users discover other great things inside of your app, based on the actions they take and where you’d like them to go.
