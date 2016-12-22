@@ -38,8 +38,16 @@ The AppWords Assistant is an AI assistant for your app users. You can use the SD
 
 While you are in the training phase of your assistant, there is an optional cards UI to show your users.  The cards will feature popular deep links from your Deeplink account, so when your users finish an action, they can be sent to other popular and interesting pages inside of your app.
 
+<br>
 
-## Using the AppWords SDK in your app
+* [Using the AppWords SDK in your app](#using-the-AppWords-SDK-in-your-app)
+
+* [Creating an Intent](#creating-an-intent)
+
+* [Displaying the Cards UI](#displaying-the-cards-ui)
+
+
+## <a name="using-the-AppWords-SDK-in-your-app"></a>Using the AppWords SDK in your app
 
 To access the SDK from your code, you will need to import the SDK header file:
 
@@ -95,7 +103,7 @@ AppWordsSDK.shared.initialize(apiToken: "API_TOKEN", appId: "APP_ID") { error in
 * The SDK status can always be checked by way of the `isInitialized` property.
 
 
-## Creating an Intent
+## <a name=“creating-an-intent“></a>Creating an Intent
 
 `Intents` are actions that your users have just completed inside your app.  For example, if you have a travel app and a user has just purchased a flight ticket, then the intent can be named `Booked Flight` or `Bought Plane Ticket`.  It is good practise to keep the same intent name of the same action inside your app, to make training your AI assistant easier and consistent.  
 
@@ -131,6 +139,81 @@ Notes:
 ## Training Your Assistant
 
 Training your assistant can be done from inside the Deeplink portal.  Portal page will be going live shortly, keep an eye out for it at [https://portal.deeplink.me/appwords](https://portal.deeplink.me/appwords)
+
+## <a name=“displaying-the-cards-ui”></a> Displaying the Cards UI
+
+Steps to take inside the Deeplink portal:
+
+* 1. Log into your Deeplink account at https://portal.deeplink.me/publishers/sign_in
+* 2. Click on the user icon.
+* 3. Click "Account Settings".
+* 4. Find “AppWords Visual” option and select “Show UI”
+
+<p align="center">
+<img src="Assets/showUI.png" />
+</p>
+
+Steps to take inside your app (Xcode):
+
+* 1. Open your application’s project where you are using AppWords library.
+* 2. Go to Main.storyboard and add AddWordsButton to the view.
+
+<p align="center">
+<img src="Assets/project.png" />
+</p>
+
+* 3. Open the specific ViewController and add properties and method below.
+
+```swift
+import UIKit
+import AppWordsSDK
+
+class ViewController: UIViewController {
+    
+    @IBOutlet weak var appWordsButton: UIButton!
+    
+    var createdIntent: Intent?
+    
+    @IBAction func appWordsButtonTapped() {
+
+    }
+}
+```
+
+* 4. Create a connection between button and view controller properties in the Main.storyboard.
+* 5. Add code to the viewDidLoad method which will create a new Intent and send it to the
+server. In the response from the server you will receive created Intent which will contain list
+of most popular deep links for your app. If the list is not empty you can show
+AppWordsButton.
+
+```swift
+override func viewDidLoad() {
+        
+    appWordsButton.isHidden = true
+        
+    AppWordsSDK.shared.createIntent(type: "tickets", view: self.view, viewName: "Bought Movie Ticket", location: "New York City Upper West Side", keywords: ["Captain America"]) { error, intent in
+            
+        self.createdIntent = intent
+            
+        if let links = intent?.topDeepLinks, links.count > 0 {
+            self.appWordsButton.isHidden = false
+        }
+    }
+}
+```
+
+
+* 6. When button was tapped show AppWordsViewController which contain all results for the
+created Intent.
+
+```swift
+@IBAction func appWordsButtonTapped() {
+        
+    if let intent = createdIntent {
+        AppWordsSDK.shared.presentAppWordsViewController(intent: intent, inViewController: self)
+    }
+}
+```
 
 <br>
 
