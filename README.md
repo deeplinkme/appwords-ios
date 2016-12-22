@@ -142,6 +142,12 @@ Training your assistant can be done from inside the Deeplink portal.  Portal pag
 
 ## <a name=“displaying-the-cards-ui”></a> Displaying the Cards UI
 
+While the assistant is training, you can display the cards UI to your users featuring popular deep links from your app.  While these aren’t yet the full assistant results (and therefore optional UI), you can still use the cards to help with app recirculation and increasing app session time.
+
+<p align="center">
+<img src="Assets/AppWordsAssistant.gif" />
+</p>
+
 Steps to take inside the Deeplink portal:
 
 * 1. Log into your Deeplink account at https://portal.deeplink.me/publishers/sign_in
@@ -156,7 +162,7 @@ Steps to take inside the Deeplink portal:
 Steps to take inside your app (Xcode):
 
 * 1. Open your application’s project where you are using AppWords library.
-* 2. Go to Main.storyboard and add AddWordsButton to the view.
+* 2. Go to Main.storyboard and add AppWordsButton to the view.
 
 <p align="center">
 <img src="Assets/project.png" />
