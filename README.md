@@ -22,7 +22,7 @@ platform :ios, '9.0'
 use_frameworks!
 
 target '<Your Target Name>' do
-    pod 'AppWordsSDK', :git => 'https://github.com/deeplinkme/appwords-ios.git'
+    pod 'AppWords'
 end
 ```
 
