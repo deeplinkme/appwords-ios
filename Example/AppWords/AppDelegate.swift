@@ -3,7 +3,7 @@
 //  AppWordsExample
 //
 //  Created by Itamar Weisbrod on 29.11.2016.
-//  Copyright © 2016 Cellogic Ltd. All rights reserved.
+//  Copyright © 2016 AppWords. All rights reserved.
 //
 
 import UIKit
@@ -16,8 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        AppWordsSDK.shared.initialize(apiToken: "API_TOKEN", appId: "APP_ID") { error in
-      
+        AppWordsSDK.shared.initialize(apiToken: "", appId: "") { error in
             if error == nil {
                 print("AppWordsSDK - initialized")
             } else {
