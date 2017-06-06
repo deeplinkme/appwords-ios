@@ -61,7 +61,7 @@ Before you start using the AppWordsSDK you should call initialize method in your
 
 ```swift
 AppWordsSDK.shared.initialize(apiToken: "API_TOKEN", appId: "APP_ID") { error in
-            
+
     if error == nil {
         print("AppWordsSDK - initialized")
     } else {
@@ -111,11 +111,11 @@ To create and send an Intent to the server you should call the createIntent(type
 
 ```swift
 AppWordsSDK.shared.createIntent(type: “flight”, view: self.view, viewName: “Flight Purchase Confirmation“, location: "New York City", keywords: [“Jet Blue“], completion: { (error, intent) -> Void in
-            
+
     if let createdIntent = intent {
         print("The Intent was created - \(createdIntent)")
     }
-            
+
 })
 ```
 
@@ -175,11 +175,11 @@ import UIKit
 import AppWordsSDK
 
 class ViewController: UIViewController {
-    
+
     @IBOutlet weak var appWordsButton: UIButton!
-    
+
     var createdIntent: Intent?
-    
+
     @IBAction func appWordsButtonTapped() {
 
     }
@@ -194,13 +194,13 @@ AppWordsButton.
 
 ```swift
 override func viewDidLoad() {
-        
+
     appWordsButton.isHidden = true
-        
+
     AppWordsSDK.shared.createIntent(type: "tickets", view: self.view, viewName: "Bought Movie Ticket", location: "New York City Upper West Side", keywords: ["Captain America"]) { error, intent in
-            
+
         self.createdIntent = intent
-            
+
         if let links = intent?.topDeepLinks, links.count > 0 {
             self.appWordsButton.isHidden = false
         }
@@ -214,12 +214,25 @@ created Intent.
 
 ```swift
 @IBAction func appWordsButtonTapped() {
-        
+
     if let intent = createdIntent {
         AppWordsSDK.shared.presentAppWordsViewController(intent: intent, inViewController: self)
     }
 }
 ```
+
+<br>
+
+## What's new in AppWordsSDK 1.0.3?
+
+What's new in AppWords v1.0.3?
+
+1. You can now use your own native button or text to call up the AppWords cards! To do this, first you should add your button to the view and call up the "AppWordsSDK.shared.presentAppWordsViewController(intent, inViewController)" method when button was tapped.
+
+Super easy!
+
+2. We overhauled the SDK Example App that ships with the SDK.  You can now install the sample app on your device, upload screenshots from the phone's camera roll, add intent/keyword data and send it to the portal for instant viewing!
+
 
 <br>
 
