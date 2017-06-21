@@ -46,6 +46,8 @@ While you are in the training phase of your assistant, there is an optional card
 
 * [Displaying the Cards UI](#displaying-the-cards-ui)
 
+* [Facebook Messenger integrate](#fb-messenger)
+
 
 ## <a name="using-the-AppWords-SDK-in-your-app"></a>Using the AppWords SDK in your app
 
@@ -223,15 +225,21 @@ created Intent.
 
 <br>
 
-## What's new in AppWordsSDK 1.0.3?
+## <a name="fb-messenger"></a>Facebook Messenger Integration
 
-What's new in AppWords v1.0.3?
+You can now add a button to link your users to the AppWords Fb Messenger bot.  The bot will send your users deep links back to your app, so you'll have another place to reengage your users and increase time spent in your app.
 
-1. You can now use your own native button or text to call up the AppWords cards! To do this, first you should add your button to the view and call up the "AppWordsSDK.shared.presentAppWordsViewController(intent, inViewController)" method when button was tapped.
+Instructions:
+* Add 'MessengerButton' to a view and call up 'AppWordsSDK.shared.presentMessengerCardViewController(inViewController: self, message: nil, buttonTitle: nil) method when the button was tapped.
+* You can optionally pass parameters such as a message and a button title. These values will be visible in Messenger card view.
 
-Super easy!
+Easy as that!
 
-2. We overhauled the SDK Example App that ships with the SDK.  You can now install the sample app on your device, upload screenshots from the phone's camera roll, add intent/keyword data and send it to the portal for instant viewing!
+## What's new in AppWordsSDK 1.1.1?
+
+What's new in AppWords v1.1.1?
+
+1. Facebook messenger integration!  Now you can have your users reenageged through the AppWords Facebook Messenger bot.  Before setting your results cards live, you can start testing results in fb messenger, and deep link users back into your app, based on their actions/intents done inside your app.
 
 
 <br>
